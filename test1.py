@@ -1,7 +1,5 @@
-#import RPi.GPIO as GPIO #this will be used on the actual device
-import gpio as GPIO# fake raspberry PI io library for development on not raspberry pi
+import Main.GPIO as GPIO#get the instance of GPIO from main
 
-GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 
 GPIO.setup(23, GPIO.OUT)#initilise the pins as inputs or outputs
 GPIO.setup(24, GPIO.IN)
