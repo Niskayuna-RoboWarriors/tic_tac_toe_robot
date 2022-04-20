@@ -3,6 +3,7 @@
 import gpio as GPIO# fake raspberry PI io library for development on not raspberry pi comment this out for any test/builds on a real PI
 import ServoController
 import AI
+import time
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 armServo1Pin=1#theese need to be set
@@ -68,3 +69,36 @@ def setLED():#sets the color of the LED based on the current difficulty
         GPIO.output(redPin,GPIO.HIGH)
         GPIO.output(greenPin, GPIO.LOW)
         GPIO.output(bluePin, GPIO.LOW)
+
+#continous execution stars here
+setLED()
+while True:#forever
+    if GPIO.input(difficultyButtonPin)==1:#if the difficulty button is pressed
+        while GPIO.input(difficultyButtonPin)==1:
+            2+2#wait until the button is released
+        AI.difficulty+=1#increase the difficulty
+        if AI.difficulty==5:#if the difficulty is more than the max then reset it
+            AI.difficulty=0
+        setLED()#update the LED
+
+    if GPIO.input(goButtonPin)==1:
+        #insert CV board updating here
+        tile = AI.botGo()#choose where to place the O
+        armServo1.set(armServo1Positions[tile])#move the arm to that position
+        armServo2.set(armServo2Positions[tile])
+        armServo3.set(armServo3Positions[tile])
+        armServo4.set(armServo4Positions[tile])
+        armServo5.set(armServo5Positions[tile])
+        baseServo.set(baseServoPositions[tile])
+        time.sleep(0.5)#give the arm time to move there
+        handServo.set(0)#open the hand
+        time.sleep(0.25)#give it time
+        armServo1.set(0)#reset the arm back to initial positions
+        armServo2.set(0)
+        armServo3.set(0)
+        armServo4.set(0)
+        armServo5.set(0)
+        baseServo.set(0.5)
+        time.sleep(0.5)#give the arm time to move
+        handServo.set(1)#close the hand grabbing the next O
+        time.sleep(0.25)#give it time
