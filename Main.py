@@ -3,8 +3,8 @@
 import gpio as GPIO# fake raspberry PI io library for development on not raspberry pi comment this out for any test/builds on a real PI
 import ServoController
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
-#pin numbers need to be set
-armServo1Pin=1
+#numbers of the pins the servos are connected to
+armServo1Pin=1#theese need to be set
 armServo2Pin=1
 armServo3Pin=1
 armServo4Pin=1
@@ -28,7 +28,7 @@ armServo5=ServoController.Servo(armServo5Pin)
 handServo=ServoController.Servo(handServoPin)
 baseServo=ServoController.Servo(baseServoPin)
 #servo positions for each tile
-armServo1Positions=[0,0,0,0,0,0,0,0,0]
+armServo1Positions=[0,0,0,0,0,0,0,0,0]#theese need to be set
 armServo2Positions=[0,0,0,0,0,0,0,0,0]
 armServo3Positions=[0,0,0,0,0,0,0,0,0]
 armServo4Positions=[0,0,0,0,0,0,0,0,0]
