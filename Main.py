@@ -1,7 +1,7 @@
 #this is the main file to run at the start of the program
 #import RPi.GPIO as GPIO #this will be used on the actual device
 import gpio as GPIO# fake raspberry PI io library for development on not raspberry pi comment this out for any test/builds on a real PI
-import ServoController
+from gpiozero import Servo
 import AI
 import time
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
@@ -13,27 +13,20 @@ armServo4Pin=1
 armServo5Pin=1
 handServoPin=1
 baseServoPin=1
-#configure the pins
-GPIO.setUp(armServo1Pin,GPIO.output)
-GPIO.setUp(armServo2Pin,GPIO.output)
-GPIO.setUp(armServo3Pin,GPIO.output)
-GPIO.setUp(armServo4Pin,GPIO.output)
-GPIO.setUp(armServo5Pin,GPIO.output)
-GPIO.setUp(handServoPin,GPIO.output)
-GPIO.setUp(baseServoPin,GPIO.output)
 #initilise the servo controllers
-armServo1=ServoController.Servo(armServo1Pin)
-armServo2=ServoController.Servo(armServo2Pin)
-armServo3=ServoController.Servo(armServo3Pin)
-armServo4=ServoController.Servo(armServo4Pin)
-armServo5=ServoController.Servo(armServo5Pin)
-handServo=ServoController.Servo(handServoPin)
-baseServo=ServoController.Servo(baseServoPin)
+armServo1=Servo(armServo1Pin)
+armServo2=Servo(armServo2Pin)
+armServo3=Servo(armServo3Pin)
+armServo4=Servo(armServo4Pin)
+armServo5=Servo(armServo5Pin)
+handServo=Servo(handServoPin)
+baseServo=Servo(baseServoPin)
 #servo positions for each tile
+#                   1 2 3 4 5 6 7 8 9
 armServo1Positions=[0,0,0,0,0,0,0,0,0]#theese need to be set
 armServo2Positions=[0,0,0,0,0,0,0,0,0]
 armServo3Positions=[0,0,0,0,0,0,0,0,0]
-armServo4Positions=[0,0,0,0,0,0,0,0,0]
+armServo4Positions=[0,0,0,0,0,0,0,0,0]#ser vo values range from -1 to 1
 armServo5Positions=[0,0,0,0,0,0,0,0,0]
 baseServoPositions=[0,0,0,0,0,0,0,0,0]
 #configure buttons and LED pins
@@ -84,21 +77,21 @@ while True:#forever
     if GPIO.input(goButtonPin)==1:
         #insert CV board updating here
         tile = AI.botGo()#choose where to place the O
-        armServo1.set(armServo1Positions[tile])#move the arm to that position
-        armServo2.set(armServo2Positions[tile])
-        armServo3.set(armServo3Positions[tile])
-        armServo4.set(armServo4Positions[tile])
-        armServo5.set(armServo5Positions[tile])
-        baseServo.set(baseServoPositions[tile])
+        armServo1.value=armServo1Positions[tile]#move the arm to that position
+        armServo2.value=armServo2Positions[tile]
+        armServo3.value=armServo3Positions[tile]
+        armServo4.value=armServo4Positions[tile]
+        armServo5.value=armServo5Positions[tile]
+        baseServo.value=baseServoPositions[tile]
         time.sleep(0.5)#give the arm time to move there
-        handServo.set(0)#open the hand
+        handServo.value=0#open the hand
         time.sleep(0.25)#give it time
-        armServo1.set(0)#reset the arm back to initial positions
-        armServo2.set(0)
-        armServo3.set(0)
-        armServo4.set(0)
-        armServo5.set(0)
-        baseServo.set(0.5)
+        armServo1.value=0#reset the arm back to initial positions
+        armServo2.value=0
+        armServo3.value=0
+        armServo4.value=0
+        armServo5.value=0
+        baseServo.value=0.5
         time.sleep(0.5)#give the arm time to move
-        handServo.set(1)#close the hand grabbing the next O
+        handServo.value=1#close the hand grabbing the next O
         time.sleep(0.25)#give it time
