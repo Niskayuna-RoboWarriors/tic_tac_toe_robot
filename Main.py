@@ -32,14 +32,14 @@ baseServoPositions=[0,0,0,0,0,0,0,0,0]
 #configure buttons and LED pins
 goButtonPin=1
 difficultyButtonPin=1
-GPIO.setUp(goButtonPin,GPIO.input)
-GPIO.setUp(difficultyButtonPin,GPIO.input)
+GPIO.setUp(goButtonPin,GPIO.IN)
+GPIO.setUp(difficultyButtonPin,GPIO.IN)
 redPin=1
 greenPin=1
 bluePin=1
-GPIO.setUp(redPin,GPIO.output)
-GPIO.setUp(greenPin,GPIO.output)
-GPIO.setUp(bluePin,GPIO.output)
+GPIO.setUp(redPin,GPIO.OUT)
+GPIO.setUp(greenPin,GPIO.OUT)
+GPIO.setUp(bluePin,GPIO.OUT)
 
 def setLED():#sets the color of the LED based on the current difficulty
     if AI.difficulty == 0:#green
