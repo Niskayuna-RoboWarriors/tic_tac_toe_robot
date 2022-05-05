@@ -9,13 +9,13 @@ import GUI
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 armServo1Pin=1#theese need to be set
-armServo2Pin=1
-armServo3Pin=1
-armServo4Pin=1
-armServo5Pin=1
-handServoPin=1
-baseServoPin=1
-baseReader=analogReader.AnalogRead(1,1)
+armServo2Pin=2
+armServo3Pin=3
+armServo4Pin=4
+armServo5Pin=5
+handServoPin=6
+baseServoPin=7
+baseReader=analogReader.AnalogRead(8,9)
 #initilise the servo controllers
 armServo1=Servo(armServo1Pin)
 armServo2=Servo(armServo2Pin)
@@ -34,16 +34,16 @@ armServo5Positions=[0,0,0,0,0,0,0,0,0]
 baseServoPositions=[0,0,0,0,0,0,0,0,0]
 initialBasePosition=3
 #configure buttons and LED pins
-goButtonPin=1
-difficultyButtonPin=1
-GPIO.setUp(goButtonPin,GPIO.IN)
-GPIO.setUp(difficultyButtonPin,GPIO.IN)
-redPin=1
-greenPin=1
-bluePin=1
-GPIO.setUp(redPin,GPIO.OUT)
-GPIO.setUp(greenPin,GPIO.OUT)
-GPIO.setUp(bluePin,GPIO.OUT)
+goButtonPin=10
+difficultyButtonPin=11
+GPIO.setup(goButtonPin,GPIO.IN)
+GPIO.setup(difficultyButtonPin,GPIO.IN)
+redPin=12
+greenPin=13
+bluePin=14
+GPIO.setup(redPin,GPIO.OUT)
+GPIO.setup(greenPin,GPIO.OUT)
+GPIO.setup(bluePin,GPIO.OUT)
 
 def setLED():#sets the color of the LED based on the current difficulty
     if AI.difficulty == 0:#green

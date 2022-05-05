@@ -5,8 +5,8 @@ import RPi.GPIO as GPIO
 class AnalogRead:
 
     def __init__(this, pina, pinb):
-        this.pina=pina
-        this.pinb=pinb
+        this.pin_a=pina
+        this.pin_b=pinb
         this.counts=[0]
         this.thread=threading.Thread(target=this.run)
         this.thread.start()
