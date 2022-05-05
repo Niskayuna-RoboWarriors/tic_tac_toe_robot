@@ -6,6 +6,7 @@ import AI
 import time
 import analogReader
 import GUI
+GUI.init()
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 armServo1Pin=1#theese need to be set
@@ -78,7 +79,7 @@ def setBasePos(val):
 
 #continous execution stars here
 setLED()
-GUI.init()
+
 print("statring")
 while True:#forever
     GUI.updateScreen()
