@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO #this will be used on the actual device
 from gpiozero import Servo
 import AI
 import time
+import analogReader
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 armServo1Pin=1#theese need to be set
@@ -13,6 +14,7 @@ armServo4Pin=1
 armServo5Pin=1
 handServoPin=1
 baseServoPin=1
+baseReader=analogReader.AnalogRead(1,1)
 #initilise the servo controllers
 armServo1=Servo(armServo1Pin)
 armServo2=Servo(armServo2Pin)
@@ -29,6 +31,7 @@ armServo3Positions=[0,0,0,0,0,0,0,0,0]
 armServo4Positions=[0,0,0,0,0,0,0,0,0]#ser vo values range from -1 to 1
 armServo5Positions=[0,0,0,0,0,0,0,0,0]
 baseServoPositions=[0,0,0,0,0,0,0,0,0]
+initialBasePosition=3
 #configure buttons and LED pins
 goButtonPin=1
 difficultyButtonPin=1
@@ -63,6 +66,15 @@ def setLED():#sets the color of the LED based on the current difficulty
         GPIO.output(greenPin, GPIO.LOW)
         GPIO.output(bluePin, GPIO.LOW)
 
+def setBasePos(val):
+    curVal=baseReader.read()
+    while curVal<val-2 or curVal > val:
+        if curVal > val:
+            baseServo.value=-0.5
+        if curVal < val:
+            baseServo.value=0.5
+        curVal=baseReader.read()
+
 #continous execution stars here
 setLED()
 while True:#forever
@@ -77,12 +89,12 @@ while True:#forever
     if GPIO.input(goButtonPin)==1:
         #insert CV board updating here
         tile = AI.botGo()#choose where to place the O
+        setBasePos(baseServoPositions[tile])#rotate the robot to the correct position
         armServo1.value=armServo1Positions[tile]#move the arm to that position
         armServo2.value=armServo2Positions[tile]
         armServo3.value=armServo3Positions[tile]
         armServo4.value=armServo4Positions[tile]
         armServo5.value=armServo5Positions[tile]
-        baseServo.value=baseServoPositions[tile]
         time.sleep(0.5)#give the arm time to move there
         handServo.value=0#open the hand
         time.sleep(0.25)#give it time
@@ -91,7 +103,7 @@ while True:#forever
         armServo3.value=0
         armServo4.value=0
         armServo5.value=0
-        baseServo.value=0.5
         time.sleep(0.5)#give the arm time to move
+        setBasePos(initialBasePosition)#move the robot back to it original position
         handServo.value=1#close the hand grabbing the next O
         time.sleep(0.25)#give it time
