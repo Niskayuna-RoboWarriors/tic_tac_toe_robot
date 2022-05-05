@@ -79,6 +79,7 @@ def setBasePos(val):
 #continous execution stars here
 setLED()
 GUI.init()
+print("statring")
 while True:#forever
     GUI.updateScreen()
     if GPIO.input(difficultyButtonPin)==1:#if the difficulty button is pressed
