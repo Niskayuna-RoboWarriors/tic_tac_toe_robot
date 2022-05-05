@@ -8,7 +8,7 @@ class AnalogRead:
         this.pina=pina
         this.pinb=pinb
         this.counts=[0]
-        this.thread=threading.Thread(target=this.tun)
+        this.thread=threading.Thread(target=this.run)
         this.thread.start()
 
     def run(this):
