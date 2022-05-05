@@ -39,7 +39,7 @@ def square(x,y,size,color,rotation = 0):
     t.end_fill()
     t.penup()
 
-init()
-while True:
-    updateScreen()
+#init()
+#while True:
+ #   updateScreen()
 
