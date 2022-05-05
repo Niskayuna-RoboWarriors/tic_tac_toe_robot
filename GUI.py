@@ -1,5 +1,5 @@
 import turtle as t
-import Main.AI as AI
+import AI as AI
 
 def init():
     screen=  t.getscreen()
