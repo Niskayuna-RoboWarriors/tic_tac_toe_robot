@@ -21,7 +21,11 @@ def updateScreen():
     square(-100, -100, 80, colors[AI.board[6]+1])
     square(0, -100, 80, colors[AI.board[7]+1])
     square(100, -100, 80, colors[AI.board[8]+1])
-
+    #square(-400,350,40,'black')
+    t.goto(-400,350)
+    t.color('black')
+    t.pendown()
+    t.write("difficulty: "+str(AI.difficulty),False,font=("Verdana",20, "normal"))
 
     t.update()
 
@@ -41,5 +45,5 @@ def square(x,y,size,color,rotation = 0):
 
 #init()
 #while True:
- #   updateScreen()
+#    updateScreen()
 
