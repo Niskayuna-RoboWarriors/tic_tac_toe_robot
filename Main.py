@@ -6,7 +6,7 @@ import AI
 import time
 import analogReader
 import GUI
-GUI.init()
+GUI.init()#start the GUI
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 armServo1Pin=1#theese need to be set

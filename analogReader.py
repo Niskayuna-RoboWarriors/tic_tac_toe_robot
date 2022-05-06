@@ -8,14 +8,13 @@ class AnalogRead:
         this.pin_a=pina
         this.pin_b=pinb
         this.counts=[0]
-        this.thread=threading.Thread(target=this.run)
-        this.thread.start()
+        #this.thread=threading.Thread(target=this.run)
+        #this.thread.start()
 
     def run(this):
-        while True:
-            this.counts.append(this.analog_read())
-            if len(this.counts)>30:
-                this.counts.pop(0)
+        this.counts.append(this.analog_read())
+        if len(this.counts)>30:
+            this.counts.pop(0)
 
     def discharge(this):  # discharge the capacitor
         GPIO.setup(this.pin_a, GPIO.IN)  # set pin a to input mode
@@ -37,6 +36,7 @@ class AnalogRead:
         return this.charge_time()  # get the charge time
 
     def read(this):
+        this.run()
         return this.avarage()
     def avarage(this):
         total=0
