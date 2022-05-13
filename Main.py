@@ -60,7 +60,7 @@ def setBasePos(val):
 #continous execution stars here
 
 print("statring")
-servoConfigTest.servoConfig()
+servoConfigTest.servoConfig(servos,armServo1,armServo2,armServo3,armServo4,armServo5,handServo)
 while True:#forever
     GUI.updateScreen()
     #if GPIO.input(difficultyButtonPin)==1:#if the difficulty button is pressed
