@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
 baseReader=analogReader.AnalogRead(7,8)
 #initilise the servo controller
-servos = ServoKit(channels=16)
+servos = ServoKit(channels=16,i2c=1)
 armServo1=1
 armServo2=9
 armServo3=10
