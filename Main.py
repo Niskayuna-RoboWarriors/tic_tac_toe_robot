@@ -5,6 +5,8 @@ import time
 import analogReader
 from adafruit_servokit import ServoKit #library for interacting with the servo controller
 import GUI
+import servoConfigTest
+
 GUI.init()#start the GUI
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
@@ -12,11 +14,11 @@ baseReader=analogReader.AnalogRead(7,8)
 #initilise the servo controller
 servos = ServoKit(channels=16)
 armServo1=1
-armServo2=2
-armServo3=3
-armServo4=4
-armServo5=5
-handServo=6
+armServo2=9
+armServo3=10
+armServo4=12
+armServo5=13
+handServo=15
 #servo positions for each tile
 #                   1 2 3 4 5 6 7 8 9 R
 armServo1Positions=[0,0,0,0,0,0,0,0,0,0]#theese need to be set
@@ -58,6 +60,7 @@ def setBasePos(val):
 #continous execution stars here
 
 print("statring")
+servoConfigTest.servoConfig()
 while True:#forever
     GUI.updateScreen()
     #if GPIO.input(difficultyButtonPin)==1:#if the difficulty button is pressed
