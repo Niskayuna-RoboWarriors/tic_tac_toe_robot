@@ -6,6 +6,7 @@ import analogReader
 from adafruit_servokit import ServoKit #library for interacting with the servo controller
 import GUI
 import servoConfigTest
+import busio
 
 GUI.init()#start the GUI
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
