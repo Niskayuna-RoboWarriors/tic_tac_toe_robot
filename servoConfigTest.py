@@ -4,7 +4,8 @@ vals=[0,0,0,0,0,0]
 def servoConfig(servos,armServo1,armServo2,armServo3,armServo4,armServo5,handServo):
     global vals
     vals=[0,0,0,0,0,0]
-    print("send a number between 0 and 6 press enter then send a number for the value to set a servo. or send ls to print current values or send s to apply the values to the servos")
+    print("send a number between 0 and 5 press enter then send a number for the value to set a servo. or send ls to print current values or send s to apply the values to the servos")
+    print("0- wrist servo. 1-last joint before hand. 2- servo under the controller board. 3/4- servos at the base of the arm. 5-claw servo")
     while True:
         inp=input("ready:")
         if inp.isnumeric():

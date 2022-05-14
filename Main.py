@@ -34,6 +34,7 @@ servos.servo[armServo2].angle=armServo2Positions[-1]
 servos.servo[armServo3].angle=armServo3Positions[-1]
 servos.servo[armServo4].angle=armServo4Positions[-1]
 servos.servo[armServo5].angle=armServo5Positions[-1]
+servos.servo[handServo].angle=90
 #configure the pins for the base servo
 baseServoSleepPin=14
 baseServoDirectionPin=15
