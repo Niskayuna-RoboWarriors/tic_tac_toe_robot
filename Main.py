@@ -18,7 +18,7 @@ armServo1=15
 armServo2=6
 armServo3=5
 armServo4=2
-armServo5=
+armServo5=3
 handServo=0
 #servo positions for each tile
 #                   1  2  3  4  5  6  7  8  9  R
