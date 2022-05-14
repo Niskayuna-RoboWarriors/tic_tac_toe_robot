@@ -14,20 +14,20 @@ GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 baseReader=analogReader.AnalogRead(7,8)
 #initilise the servo controller
 servos = ServoKit(channels=16,i2c=busio.I2C(3,2))
-armServo1=1
-armServo2=9
-armServo3=10
-armServo4=12
-armServo5=13
-handServo=15
+armServo1=15
+armServo2=6
+armServo3=5
+armServo4=2
+armServo5=
+handServo=0
 #servo positions for each tile
-#                   1 2 3 4 5 6 7 8 9 R
-armServo1Positions=[0,0,0,0,0,0,0,0,0,0]#theese need to be set
-armServo2Positions=[0,0,0,0,0,0,0,0,0,0]
-armServo3Positions=[0,0,0,0,0,0,0,0,0,0]
-armServo4Positions=[0,0,0,0,0,0,0,0,0,0]#ser vo values range from -1 to 1
-armServo5Positions=[0,0,0,0,0,0,0,0,0,0]
-baseServoPositions=[0,0,0,0,0,0,0,0,0,3]
+#                   1  2  3  4  5  6  7  8  9  R
+armServo1Positions=[90,90,90,90,90,90,90,90,90,90]#theese need to be set
+armServo2Positions=[90,90,90,90,90,90,90,90,90,90]
+armServo3Positions=[90,90,90,90,90,90,90,90,90,90]
+armServo4Positions=[90,90,90,90,90,90,90,90,90,90]#ser vo values range from -1 to 1
+armServo5Positions=[90,90,90,90,90,90,90,90,90,90]
+baseServoPositions=[90,90,90,90,90,90,90,90,90,90]
 #set servos to their default positions
 servos.servo[armServo1].angle=armServo1Positions[-1]
 servos.servo[armServo2].angle=armServo2Positions[-1]
