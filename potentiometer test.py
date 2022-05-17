@@ -3,8 +3,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-pin_a = 18#set the number of pin a
-pin_b = 24#set the number of pin b
+pin_a = 20#set the number of pin a
+pin_b = 21#set the number of pin b
 
 def discharge():#discharge the capacitor
     GPIO.setup(pin_a, GPIO.IN)#set pin a to input mode
@@ -27,4 +27,4 @@ def analog_read():#combine the previous functions
 
 while True:#forever
     print(analog_read())#send the result of charge_tine() to the console
-    time.sleep(1)#wait 1 second
+    time.sleep(0.1)#wait 1 second
