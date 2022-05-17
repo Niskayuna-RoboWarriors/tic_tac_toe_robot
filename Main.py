@@ -11,7 +11,7 @@ import busio
 GUI.init()#start the GUI
 GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 #numbers of the pins the servos are connected to
-baseReader=analogReader.AnalogRead(7,8)
+baseReader=analogReader.AnalogRead(20,21)
 #initilise the servo controller
 servos = ServoKit(channels=16,i2c=busio.I2C(3,2))
 armServo1=15
@@ -19,7 +19,7 @@ armServo2=6
 armServo3=5
 armServo4=2
 armServo5=3
-handServo=0
+handServo=10
 #servo positions for each tile
 #                   1  2  3  4  5  6  7  8  9  R
 armServo1Positions=[90,90,90,90,90,90,90,90,90,90]#theese need to be set
