@@ -14,7 +14,7 @@ GPIO.setmode(GPIO.BCM)#set the pin numbering mode
 baseReader=analogReader.AnalogRead(20,21)
 #initilise the servo controller
 servos = ServoKit(channels=16,i2c=busio.I2C(3,2))
-armServo1=15
+armServo1=14
 armServo2=6
 armServo3=5
 armServo4=2
