@@ -22,11 +22,11 @@ armServo5=3
 handServo=10
 #servo positions for each tile
 #                   1  2  3  4  5  6  7  8  9  R
-armServo1Positions=[90,90,90,90,90,90,90,90,90,90]#theese need to be set
+armServo1Positions=[90,60,90,90,30,90,90,1,90,90]#theese need to be set
 armServo2Positions=[90,90,90,90,90,90,90,90,90,90]
-armServo3Positions=[90,90,90,90,90,90,90,90,90,90]
-armServo4Positions=[90,90,90,90,90,90,90,90,90,90]#ser vo values range from -1 to 1
-armServo5Positions=[90,90,90,90,90,90,90,90,90,90]
+armServo3Positions=[90,140,90,90,160,90,90,179,90,90]
+armServo4Positions=[90,10,90,90,40,90,90,110,90,90]#ser vo values range from -1 to 1
+armServo5Positions=[90,170,90,90,140,90,90,80,90,90]
 baseServoPositions=[90,90,90,90,90,90,90,90,90,90]
 #set servos to their default positions
 servos.servo[armServo1].angle=armServo1Positions[-1]
@@ -37,8 +37,8 @@ servos.servo[armServo5].angle=armServo5Positions[-1]
 servos.servo[handServo].angle=90
 #configure the pins for the base servo
 baseServoSleepPin=14
-baseServoDirectionPin=15
-baseServoStepPin=18
+baseServoDirectionPin=18
+baseServoStepPin=15
 GPIO.setup(baseServoSleepPin, GPIO.OUT)#configure pins
 GPIO.setup(baseServoDirectionPin,GPIO.OUT)
 GPIO.setup(baseServoStepPin,GPIO.OUT)
