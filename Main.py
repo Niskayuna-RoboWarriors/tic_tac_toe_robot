@@ -37,8 +37,8 @@ servos.servo[armServo5].angle=armServo5Positions[-1]
 servos.servo[handServo].angle=90
 #configure the pins for the base servo
 baseServoSleepPin=14
-baseServoDirectionPin=18
-baseServoStepPin=15
+baseServoDirectionPin=15
+baseServoStepPin=18
 GPIO.setup(baseServoSleepPin, GPIO.OUT)#configure pins
 GPIO.setup(baseServoDirectionPin,GPIO.OUT)
 GPIO.setup(baseServoStepPin,GPIO.OUT)
