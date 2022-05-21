@@ -58,7 +58,7 @@ def baseTo(val):
 
 def baseFrom(val):
     GPIO.output(baseServoSleepPin,True)#start the base motor
-    GPIO.output(baseServoDirectionPin,False)#set the direction
+    GPIO.output(baseServoDirectionPin,True)#set the direction
     for a in range(int(val)):#tell the motor controller to sterp the number of steps
         GPIO.output(baseServoStepPin, True)
         time.sleep(0.01)
