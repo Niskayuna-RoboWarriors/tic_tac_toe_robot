@@ -141,4 +141,4 @@ while True:#forever
         if inp=='c':
             servos.servo[handServo].angle=10
         if inp=='o':
-            servos.servo[handServo].angle=10
+            servos.servo[handServo].angle=90
