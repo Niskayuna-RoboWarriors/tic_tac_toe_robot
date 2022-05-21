@@ -47,7 +47,6 @@ stepPWM.start(50)#start the PWM with a duty cycle of 50
 goButtonPin=23
 GPIO.setup(goButtonPin,GPIO.OUT)
 def baseTo(val):
-    print(val)
     GPIO.output(baseServoSleepPin,True)#start the base motor
     GPIO.output(baseServoDirectionPin,False)#set the direction
     for a in range(val):#tell the motor controller to sterp the number of steps
@@ -96,7 +95,7 @@ print("statring")
 while True:#forever
     GUI.updateScreen()
     if gameRunning:
-        inp = input("enter human player move")
+        inp = input("enter human player move: ")
         if inp.isnumeric():
             tile=int(inp)
             if 0<= tile <9:
@@ -119,7 +118,7 @@ while True:#forever
         if inp=='c':
             servos.servo[handServo].angle=10
         if inp=='o':
-            servos.servo[handServo].angle=10
+            servos.servo[handServo].angle=90
         if inp=='pb':
             print(AI.board)
 
