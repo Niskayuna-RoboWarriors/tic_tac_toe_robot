@@ -18,6 +18,7 @@ while True:
         direction=not direction
     if inp.isnumeric():
         GPIO.output(baseServoSleepPin, True)
+        print(int(inp))
         for a in range(int(inp)):
             GPIO.output(baseServoStepPin,True)
             time.sleep(0.01)

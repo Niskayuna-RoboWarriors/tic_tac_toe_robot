@@ -47,6 +47,7 @@ stepPWM.start(50)#start the PWM with a duty cycle of 50
 goButtonPin=23
 GPIO.setup(goButtonPin,GPIO.OUT)
 def baseTo(val):
+    print(val)
     GPIO.output(baseServoSleepPin,True)#start the base motor
     GPIO.output(baseServoDirectionPin,False)#set the direction
     for a in range(val):#tell the motor controller to sterp the number of steps
