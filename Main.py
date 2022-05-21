@@ -90,7 +90,7 @@ def armMovePos(index):
 #continous execution stars here
 
 print("statring")
-servoConfigTest.servoConfig(servos,armServo1,armServo2,armServo3,armServo4,armServo5,handServo)
+#servoConfigTest.servoConfig(servos,armServo1,armServo2,armServo3,armServo4,armServo5,handServo)
 while True:#forever
     inp = input("ready:")
     GUI.updateScreen()
