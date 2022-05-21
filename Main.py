@@ -101,7 +101,7 @@ while True:#forever
             if 0<= tile <9:
                 if AI.board[tile]==0:
                     AI.board[tile]=1
-                    armMovePos(AI.botGo())
+                    armMovePos(int(AI.botGo()))
                     if AI.boardFull():
                         print("staleMate")
                         gameRunning = False
