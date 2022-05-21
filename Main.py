@@ -85,37 +85,57 @@ def armMovePos(index):
     time.sleep(1)
     baseFrom(baseServoPositions[index])#rotate the base back
     time.sleep(0.5)
-    servos.servo[handServo].angle = 10  # close the hand
+    #servos.servo[handServo].angle = 10  # close the hand
 
 
 #continous execution stars here
-
+gameRunning=False
 print("statring")
 #servoConfigTest.servoConfig(servos,armServo1,armServo2,armServo3,armServo4,armServo5,handServo)
 while True:#forever
-    inp = input("ready:")
     GUI.updateScreen()
-    if inp.isnumeric():
-        if 0 <= int(inp) < 9:
-            armMovePos(int(inp))
+    if gameRunning:
+        inp = input("enter human player move")
+        if inp.isnumeric():
+            tile=int(inp)
+            if 0<= tile <9:
+                if AI.board[tile]==0:
+                    AI.board[tile]=1
+                    armMovePos(AI.botGo())
+                    if AI.boardFull():
+                        print("staleMate")
+                        gameRunning = False
+                        AI.board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                    if AI.detectWin():
+                        print("GAME OVER")
+                        gameRunning = False
+                        AI.board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+                else:
+                    print("invalid, that already has something on it")
+        if inp=="end":
+            gameRunning=False
+            AI.board=[0,0,0,0,0,0,0,0,0]
+        if inp=='c':
+            servos.servo[handServo].angle=10
+        if inp=='o':
+            servos.servo[handServo].angle=10
 
-        ##insert CV board updating here
-        #tile = AI.botGo()#choose where to place the O
-        #setBasePos(baseServoPositions[tile])#rotate the robot to the correct position
-        #servos.servo[armServo1].angle=armServo1Positions[tile]#move the arm to that position
-        #servos.servo[armServo2].angle=armServo2Positions[tile]
-        #servos.servo[armServo3].angle=armServo3Positions[tile]
-        #servos.servo[armServo4].angle=armServo4Positions[tile]
-        #servos.servo[armServo5].angle=armServo5Positions[tile]
-        #time.sleep(0.5)#give the arm time to move there
-        #servos.servo[handServo]=90#open the hand
-        #time.sleep(0.25)#give it time
-        #servos.servo[armServo1].angle=armServo1Positions[-1]#reset the arm back to initial positions
-        #servos.servo[armServo2].angle=armServo2Positions[-1]
-        #servos.servo[armServo3].angle=armServo3Positions[-1]
-        #servos.servo[armServo4].angle=armServo4Positions[-1]
-        #servos.servo[armServo5].angle=armServo5Positions[-1]
-        #time.sleep(0.5)#give the arm time to move
-        #setBasePos(baseServoPositions[-1])#move the robot back to it original position
-        #servos.servo[handServo]=1#close the hand grabbing the next o
-        #time.sleep(0.25)#give it time
+    else:
+        inp = input("ready:")
+        if inp=='start':
+            gameRunning = True
+            if AI.botGoesFirst:
+                armMovePos(AI.botGo())
+        if inp=='d':
+            dif=input("enter new difficulty between 0 and 4")
+            if dif.isnumeric():
+                if 0<=int(dif)<5:
+                    AI.difficulty=int(dif)
+            print("difficulty is not"+str(AI.difficulty))
+        if inp=='bf':
+            AI.botGoesFirst=not AI.botGoesFirst
+            print("bot goes first: "+str(AI.botGoesFirst))
+        if inp=='c':
+            servos.servo[handServo].angle=10
+        if inp=='o':
+            servos.servo[handServo].angle=10
