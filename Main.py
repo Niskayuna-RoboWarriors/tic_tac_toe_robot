@@ -125,7 +125,7 @@ while True:#forever
         if inp=='start':
             gameRunning = True
             if AI.botGoesFirst:
-                armMovePos(AI.botGo())
+                armMovePos(int(AI.botGo()))
         if inp=='d':
             dif=input("enter new difficulty between 0 and 4")
             if dif.isnumeric():
