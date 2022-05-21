@@ -74,7 +74,7 @@ def armMovePos(index):
     servos.servo[armServo3].angle = armServo3Positions[index]
     servos.servo[armServo4].angle = armServo4Positions[index]
     servos.servo[armServo5].angle = armServo5Positions[index]
-    time.sleep(1)
+    time.sleep(2)
     servos.servo[handServo].angle=90#open the hand
     time.sleep(0.3)
     servos.servo[armServo1].angle = armServo1Positions[-1]#move ther servos back
