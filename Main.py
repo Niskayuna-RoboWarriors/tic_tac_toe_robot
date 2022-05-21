@@ -25,7 +25,7 @@ armServo2Positions=[90,90,90,90,90,90,90,90,90,90]
 armServo3Positions=[140,140,140,130,160,160,179,179,179,160]
 armServo4Positions=[10,10,10,40,40,40,57,110,75,120]#ser vo values range from -1 to 1
 armServo5Positions=[170,170,170,140,140,140,115,80,115,70]
-baseServoPositions=[235,200,170,245,200,155,275,200,125,0]
+baseServoPositions=[117,100,85,122,100,77,137,100,62,0]
 #set servos to their default positions
 servos.servo[armServo1].angle=armServo1Positions[-1]
 servos.servo[armServo2].angle=armServo2Positions[-1]
