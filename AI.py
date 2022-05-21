@@ -21,10 +21,12 @@ def makeGuess(mode):
     if mode==2:
         tmpFalse=False
         if towInaRow()!=-1:#if the player has 2 in a row and can win then win
+            print("2 in a row ")
             tile=towInaRow()
             board[tile]=-1
             return tile
         elif block()!=-1:#Block: If the opponent has two in a row, the player must play the third themselves to block the opponent.
+            print("block")
             tile=block()
             board[tile]=-1
             return tile
@@ -33,17 +35,21 @@ def makeGuess(mode):
         elif tmpFalse:#Blocking an opponent's fork: If there is only one possible fork for the opponent, the player should block it. Otherwise, the player should block all forks in any way that simultaneously allows them to make two in a row. Otherwise, the player should make a two in a row to force the opponent into defending, as long as it does not result in them producing a fork. For example, if "X" has two opposite corners and "O" has the center, "O" must not play a corner move to win. (Playing a corner move in this scenario produces a fork for "X" to win.)
             a=""
         elif board[4]==0:#Center: A player marks the center.
+            print("center")
             board[4]=-1
             return 4
         elif opposetCorner()!=-1:#Opposite corner: If the opponent is in the corner, the player plays the opposite corner.
+            print("opposed corner")
             tile=opposetCorner()
             board[tile]=-1
             return tile
         elif emptyCorner():#Empty corner: The player plays in a corner square.
+            print("empty corner")
             tile=emptyCorner()
             board[tile]=-1
             return tile
         elif emptySide()!=-1:#Empty side: The player plays in a middle square on any of the four sides.
+            print("empty side")
             tile=emptySide()
             board[tile]=-1
             return tile
