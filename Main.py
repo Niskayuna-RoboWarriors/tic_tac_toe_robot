@@ -68,6 +68,7 @@ def baseFrom(val):
     GPIO.output(baseServoSleepPin,False)#stop the base motor
 
 def armMovePos(index):
+    print("chose: "+str(index))
     baseTo(baseServoPositions[index])#rotate the base to the position
     servos.servo[armServo1].angle = armServo1Positions[index]#move the servos to posiution
     servos.servo[armServo2].angle = armServo2Positions[index]
@@ -119,19 +120,21 @@ while True:#forever
             servos.servo[handServo].angle=10
         if inp=='o':
             servos.servo[handServo].angle=10
+        if inp=='pb':
+            print(AI.board)
 
     else:
-        inp = input("ready:")
+        inp = input("ready: ")
         if inp=='start':
             gameRunning = True
             if AI.botGoesFirst:
                 armMovePos(int(AI.botGo()))
         if inp=='d':
-            dif=input("enter new difficulty between 0 and 4")
+            dif=input("enter new difficulty between 0 and 4: ")
             if dif.isnumeric():
                 if 0<=int(dif)<5:
                     AI.difficulty=int(dif)
-            print("difficulty is not"+str(AI.difficulty))
+            print("difficulty is now "+str(AI.difficulty))
         if inp=='bf':
             AI.botGoesFirst=not AI.botGoesFirst
             print("bot goes first: "+str(AI.botGoesFirst))
