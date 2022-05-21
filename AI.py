@@ -86,31 +86,54 @@ def boardFull():
 
 def detectWin():
     i =-1
-    for a in range (2): # check for both O and X
-        if board[0] == i and board[1] == i and board[2] == i:# top row
-            return True
+    if board[0] == i and board[1] == i and board[2] == i:# top row
+        return True
 
-        if board[3] == i and board[4] == i and board[5] == i:# middle row
-            return True
+    if board[3] == i and board[4] == i and board[5] == i:# middle row
+        return True
 
-        if board[6] == i and board[7] == i and board[8] == i:# bottom row
-            return True
+    if board[6] == i and board[7] == i and board[8] == i:# bottom row
+        return True
 
-        if board[0] == i and board[3] == i and board[6] == i:# left colom
-            return True
+    if board[0] == i and board[3] == i and board[6] == i:# left colom
+        return True
 
-        if board[1] == i and board[4] == i and board[7] == i:# middle colom
-            return True
+    if board[1] == i and board[4] == i and board[7] == i:# middle colom
+        return True
 
-        if board[2] == i and board[5] == i and board[8] == i:# right colom
-            return True
+    if board[2] == i and board[5] == i and board[8] == i:# right colom
+        return True
 
-        if board[0] == i and board[4] == i and board[8] == i:# diagonal 1
-            return True
+    if board[0] == i and board[4] == i and board[8] == i:# diagonal 1
+        return True
 
-        if board[2] == i and board[4] == i and board[6] == i:# diagonal 2
-            return True
+    if board[2] == i and board[4] == i and board[6] == i:# diagonal 2
+        return True
 
+    i = 1
+    if board[0] == i and board[1] == i and board[2] == i:  # top row
+        return True
+
+    if board[3] == i and board[4] == i and board[5] == i:  # middle row
+        return True
+
+    if board[6] == i and board[7] == i and board[8] == i:  # bottom row
+        return True
+
+    if board[0] == i and board[3] == i and board[6] == i:  # left colom
+        return True
+
+    if board[1] == i and board[4] == i and board[7] == i:  # middle colom
+        return True
+
+    if board[2] == i and board[5] == i and board[8] == i:  # right colom
+        return True
+
+    if board[0] == i and board[4] == i and board[8] == i:  # diagonal 1
+        return True
+
+    if board[2] == i and board[4] == i and board[6] == i:  # diagonal 2
+        return True
     return False
 
 def towInaRow():
