@@ -231,7 +231,7 @@ def block():
         return 4
     if board[2] == 0 and board[4] == 1 and board[6] == 1:
         return 2
-    return 1
+    return -1
 
 def opposetCorner():
     if board[0] == 1 and board[8] == 0:
