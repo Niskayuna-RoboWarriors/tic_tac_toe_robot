@@ -74,7 +74,7 @@ def armMovePos(index):
     servos.servo[armServo3].angle = armServo3Positions[index]
     servos.servo[armServo4].angle = armServo4Positions[index]
     servos.servo[armServo5].angle = armServo5Positions[index]
-    time.sleep(0.5)
+    time.sleep(1)
     servos.servo[handServo].angle=90#open the hand
     time.sleep(0.3)
     servos.servo[armServo1].angle = armServo1Positions[-1]#move ther servos back
@@ -82,7 +82,7 @@ def armMovePos(index):
     servos.servo[armServo3].angle = armServo3Positions[-1]
     servos.servo[armServo4].angle = armServo4Positions[-1]
     servos.servo[armServo5].angle = armServo5Positions[-1]
-    time.sleep(0.5)
+    time.sleep(1)
     baseFrom(baseServoPositions[index])#rotate the base back
     time.sleep(0.5)
     servos.servo[handServo].angle = 10  # close the hand
