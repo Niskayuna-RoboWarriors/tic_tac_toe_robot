@@ -21,11 +21,13 @@ def makeGuess(mode):
     if mode==2:
         tmpFalse=False
         if towInaRow()!=-1:#if the player has 2 in a row and can win then win
-            board[towInaRow()]=-1
-            return towInaRow()
+            tile=towInaRow()
+            board[tile]=-1
+            return tile
         elif block()!=-1:#Block: If the opponent has two in a row, the player must play the third themselves to block the opponent.
-            board[block()]=-1
-            return block()
+            tile=block()
+            board[tile]=-1
+            return tile
         elif tmpFalse:#Fork: Cause a scenario where the player has two ways to win (two non-blocked lines of 2).
             a=""#i cant be bothered to figure out how to implement these steps
         elif tmpFalse:#Blocking an opponent's fork: If there is only one possible fork for the opponent, the player should block it. Otherwise, the player should block all forks in any way that simultaneously allows them to make two in a row. Otherwise, the player should make a two in a row to force the opponent into defending, as long as it does not result in them producing a fork. For example, if "X" has two opposite corners and "O" has the center, "O" must not play a corner move to win. (Playing a corner move in this scenario produces a fork for "X" to win.)
@@ -34,14 +36,17 @@ def makeGuess(mode):
             board[4]=-1
             return 4
         elif opposetCorner()!=-1:#Opposite corner: If the opponent is in the corner, the player plays the opposite corner.
-            board[opposetCorner()]=-1
-            return opposetCorner()
+            tile=opposetCorner()
+            board[tile]=-1
+            return tile
         elif emptyCorner():#Empty corner: The player plays in a corner square.
-            board[emptyCorner()]=-1
-            return emptyCorner()
+            tile=emptyCorner()
+            board[tile]=-1
+            return tile
         elif emptySide()!=-1:#Empty side: The player plays in a middle square on any of the four sides.
-            board[emptySide()]=-1
-            return emptySide()
+            tile=emptySide()
+            board[tile]=-1
+            return tile
         else:#if somehow it didn't decide to do one of the previous then randomly choose a place to place
             return makeGuess(1)
     #end of mode 2
