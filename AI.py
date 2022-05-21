@@ -49,7 +49,7 @@ def makeGuess(mode):
 def botGo():#call this function to have the bot make its move
     randMode=random.randint(0,100)
     if difficulty==0:
-        makeGuess(1)
+        return makeGuess(1)
     if difficulty==1:
         if randMode>75:
             return makeGuess(2)
