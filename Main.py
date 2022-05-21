@@ -49,7 +49,7 @@ GPIO.setup(goButtonPin,GPIO.OUT)
 def baseTo(val):
     GPIO.output(baseServoSleepPin,True)#start the base motor
     GPIO.output(baseServoDirectionPin,False)#set the direction
-    for a in range(int(val)):#tell the motor controller to sterp the number of steps
+    for a in range(baseServoPositions[int(val)]):#tell the motor controller to sterp the number of steps
         GPIO.output(baseServoStepPin, True)
         time.sleep(0.01)
         GPIO.output(baseServoStepPin, False)
@@ -59,7 +59,7 @@ def baseTo(val):
 def baseFrom(val):
     GPIO.output(baseServoSleepPin,True)#start the base motor
     GPIO.output(baseServoDirectionPin,True)#set the direction
-    for a in range(int(val)):#tell the motor controller to sterp the number of steps
+    for a in range(baseServoPositions[int(val)]):#tell the motor controller to sterp the number of steps
         GPIO.output(baseServoStepPin, True)
         time.sleep(0.01)
         GPIO.output(baseServoStepPin, False)
